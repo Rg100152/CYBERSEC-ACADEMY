@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="8-Month Cyber Security Curriculum — CyberSec Academy. From fundamentals to advanced ethical hacking.">
+<title>Course Curriculum | CyberSec Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --neon: #00ff41;
+    --neon-bright: #39ff6e;
+    --neon-dim: #00cc33;
+    --neon-dark: #008822;
+    --neon-glow: 0 0 12px rgba(0, 255, 65, 0.6);
+    --neon-glow-lg: 0 0 30px rgba(0, 255, 65, 0.4);
+    --cyan: #00d9ff;
+    --cyan-glow: 0 0 12px rgba(0, 217, 255, 0.6);
+    --red: #ff3333;
+    --yellow: #ffcc00;
+    --orange: #ff8800;
+    --purple: #b366ff;
+    --bg: #0a0e0a;
+    --bg-dark: #050805;
+    --bg-darker: #020302;
+    --bg-card: #0f1410;
+    --bg-card-hover: #141a16;
+    --border: #1a2f1e;
+    --border-bright: #2a4a32;
+    --text: #d4ffd9;
+    --text-dim: #6b8a72;
+    --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      linear-gradient(rgba(0, 255, 65, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ul { list-style: none; }
+  .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--neon-dark); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--neon); }
+  ::selection { background: var(--neon); color: var(--bg); }
+
+  /* STATUS BAR */
+  .statusbar {
+    background: #000; padding: 8px 0;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--neon); letter-spacing: 0.5px;
+    position: relative; z-index: 1001;
+  }
+  .statusbar::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    animation: scanline 4s linear infinite;
+  }
+  @keyframes scanline { 0%{transform:translateX(-100%);} 100%{transform:translateX(100%);} }
+  .statusbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .statusbar-left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .status-dot {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--neon); border-radius: 50%;
+    box-shadow: var(--neon-glow); animation: pulse-dot 1.5s infinite;
+  }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(1.3);} }
+  .blink { animation: blink 1s infinite; }
+  @keyframes blink { 50%{opacity:0.2;} }
+
+  /* NAVBAR */
+  .navbar {
+    background: rgba(5, 8, 5, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    position: sticky; top: 0; z-index: 1000;
+    transition: var(--transition);
+  }
+  .navbar.scrolled {
+    padding: 12px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-bottom-color: var(--border-bright);
+  }
+  .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+    color: var(--neon); letter-spacing: 2px;
+    text-shadow: var(--neon-glow); transition: var(--transition);
+  }
+  .logo img {
+    width: 40px; height: 40px; border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .logo .dot { color: var(--neon-dim); }
+  .logo:hover { letter-spacing: 3px; }
+
+  .menu { display: flex; gap: 32px; font-family: var(--font-mono); font-size: 0.85rem; }
+  .menu a {
+    color: var(--text-dim); letter-spacing: 1.5px;
+    text-transform: uppercase; transition: var(--transition);
+    position: relative; padding: 6px 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .menu a::before {
+    content: '>'; color: var(--neon); opacity: 0;
+    margin-left: -12px; transition: var(--transition); font-weight: bold;
+  }
+  .menu a:hover, .menu a.active { color: var(--neon); text-shadow: var(--neon-glow); }
+  .menu a:hover::before, .menu a.active::before { opacity: 1; margin-left: 0; }
+  .menu a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--neon);
+    box-shadow: var(--neon-glow); transition: var(--transition);
+  }
+  .menu a:hover::after, .menu a.active::after { width: 100%; }
+  .nav-btns { display: flex; gap: 10px; }
+
+  /* BUTTONS */
+  .btn {
+    font-family: var(--font-mono); font-size: 0.8rem;
+    padding: 11px 24px; cursor: pointer;
+    transition: var(--transition); letter-spacing: 1.5px;
+    text-transform: uppercase; border: 1px solid var(--neon);
+    background: transparent; color: var(--neon);
+    display: inline-flex; align-items: center; gap: 8px;
+    position: relative; overflow: hidden; font-weight: 400;
+  }
+  .btn::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%; background: var(--neon);
+    transition: var(--transition); z-index: -1;
+  }
+  .btn:hover::before { left: 0; }
+  .btn:hover { color: var(--bg); box-shadow: var(--neon-glow-lg); transform: translateY(-2px); }
+  .btn-fill {
+    background: var(--neon); color: var(--bg); font-weight: 700;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  }
+  .btn-fill::before { background: var(--neon-bright); }
+  .btn-fill:hover { background: var(--neon-bright); box-shadow: 0 0 30px rgba(0, 255, 65, 0.8); }
+  .btn-lg { padding: 15px 32px; font-size: 0.9rem; }
+
+  /* SECTION */
+  .section { padding: 80px 0; position: relative; }
+  .section-head { text-align: center; margin-bottom: 60px; }
+  .section-head .tag {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--neon); letter-spacing: 4px;
+    text-transform: uppercase; display: inline-block;
+    margin-bottom: 14px; padding: 6px 14px;
+    border: 1px solid var(--border-bright);
+    background: rgba(0, 255, 65, 0.03);
+  }
+  .section-head h2 {
+    font-family: var(--font-display); font-size: 2.5rem;
+    font-weight: 900; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .section-head h2 .neon { color: var(--neon); text-shadow: var(--neon-glow); }
+  .section-head p {
+    color: var(--text-dim); max-width: 620px;
+    margin: 0 auto; font-size: 1rem; line-height: 1.7;
+  }
+  .section-head .divider {
+    width: 80px; height: 2px; background: var(--neon);
+    box-shadow: var(--neon-glow); margin: 20px auto 0;
+    position: relative;
+  }
+  .section-head .divider::before,
+  .section-head .divider::after {
+    content: ''; position: absolute; top: 50%;
+    width: 6px; height: 6px; background: var(--neon);
+    transform: translateY(-50%) rotate(45deg);
+    box-shadow: var(--neon-glow);
+  }
+  .section-head .divider::before { left: -12px; }
+  .section-head .divider::after { right: -12px; }
+
+  /* HERO */
+  .course-hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(0, 255, 65, 0.04) 0%, transparent 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .course-hero::before {
+    content: ''; position: absolute; top: -30%; left: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0, 255, 65, 0.08), transparent 70%);
+    border-radius: 50%; animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-30px);} }
+  .course-hero .container { position: relative; z-index: 2; }
+  .course-hero .tag {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--neon); letter-spacing: 3px;
+    text-transform: uppercase; display: inline-block;
+    margin-bottom: 18px; padding: 6px 16px;
+    border: 1px solid var(--border-bright);
+    background: rgba(0, 255, 65, 0.05);
+  }
+  .course-hero h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .course-hero h1 .neon { color: var(--neon); text-shadow: 0 0 20px rgba(0, 255, 65, 0.7); }
+  .course-hero p {
+    color: var(--text-dim);
+    max-width: 680px;
+    margin: 0 auto 30px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* OVERVIEW STRIP */
+  .overview-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
+  }
+  .overview-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .overview-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--neon);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition-slow);
+    box-shadow: var(--neon-glow);
+  }
+  .overview-box:hover::before { transform: scaleX(1); }
+  .overview-box:hover {
+    border-color: var(--neon);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0, 255, 65, 0.12);
+  }
+  .overview-box i {
+    font-size: 1.6rem;
+    color: var(--neon);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .overview-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .overview-box p {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* MODULES */
+  .module {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin-bottom: 22px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .module::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--neon);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: var(--transition-slow);
+    box-shadow: var(--neon-glow);
+  }
+  .module.open::before, .module:hover::before { transform: scaleY(1); }
+  .module.open {
+    border-color: var(--neon);
+    box-shadow: 0 15px 40px rgba(0, 255, 65, 0.12);
+  }
+  .module-head {
+    padding: 26px 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition);
+    user-select: none;
+  }
+  .module-head:hover { background: var(--bg-card-hover); }
+  .module-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    min-width: 60px;
+    line-height: 1;
+  }
+  .module-title-wrap { flex: 1; }
+  .module-meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .module-head h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text);
+    transition: var(--transition);
+  }
+  .module.open .module-head h3, .module-head:hover h3 { color: var(--neon); }
+  .module-toggle {
+    width: 38px; height: 38px;
+    border: 1px solid var(--border-bright);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--neon); font-size: 0.9rem;
+    transition: var(--transition);
+    flex-shrink: 0;
+  }
+  .module.open .module-toggle {
+    background: var(--neon);
+    color: var(--bg);
+    box-shadow: var(--neon-glow);
+    transform: rotate(45deg);
+    border-color: var(--neon);
+  }
+  .module-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .module.open .module-body { max-height: 900px; }
+  .module-body-inner {
+    padding: 0 30px 28px 110px;
+    border-top: 1px dashed var(--border);
+    padding-top: 22px;
+  }
+  .module-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .topic-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px 26px;
+  }
+  .topic-list li {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+  .topic-list li::before {
+    content: '▸';
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    flex-shrink: 0;
+  }
+  .module-tools {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tool-chip {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 5px 12px;
+    border: 1px solid var(--border-bright);
+    color: var(--cyan);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+    background: rgba(0, 217, 255, 0.04);
+  }
+  .tool-chip:hover {
+    border-color: var(--cyan);
+    box-shadow: var(--cyan-glow);
+    color: var(--cyan);
+    background: rgba(0, 217, 255, 0.1);
+  }
+
+  /* OUTCOMES */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .outcome-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .outcome-card:hover {
+    border-color: var(--neon);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0, 255, 65, 0.12);
+  }
+  .outcome-card i {
+    font-size: 1.6rem;
+    color: var(--neon);
+    margin-bottom: 16px;
+    display: block;
+    text-shadow: var(--neon-glow);
+  }
+  .outcome-card h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 10px;
+    transition: var(--transition);
+  }
+  .outcome-card:hover h4 { color: var(--neon); }
+  .outcome-card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+    align-items: stretch;
+  }
+  .price-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 34px 28px;
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .price-card:hover {
+    border-color: var(--neon);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 255, 65, 0.15);
+    background: var(--bg-card-hover);
+  }
+  .price-card.featured {
+    border-color: var(--neon);
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.2);
+    background: linear-gradient(180deg, rgba(0, 255, 65, 0.05), var(--bg-card));
+  }
+  .price-card.featured::before {
+    content: 'RECOMMENDED';
+    position: absolute;
+    top: -1px; right: 20px;
+    background: var(--neon);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    letter-spacing: 1.5px;
+    box-shadow: var(--neon-glow);
+  }
+  .price-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .price-desc {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .price-amount {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .price-amount span {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-shadow: none;
+  }
+  .price-period {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--cyan);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+  .price-features {
+    flex: 1;
+    margin-bottom: 26px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border);
+  }
+  .price-features li {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    padding: 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .price-features li i {
+    color: var(--neon);
+    font-size: 0.75rem;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .price-features li.muted i { color: var(--text-dim); opacity: 0.5; }
+  .price-features li.muted { opacity: 0.5; }
+
+  /* FAQ */
+  .faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin-bottom: 14px;
+    transition: var(--transition);
+  }
+  .faq-item.open { border-color: var(--neon); box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1); }
+  .faq-q {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text);
+    transition: var(--transition);
+    user-select: none;
+  }
+  .faq-q:hover, .faq-item.open .faq-q { color: var(--neon); }
+  .faq-q i {
+    color: var(--neon);
+    transition: var(--transition);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-q i { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .faq-item.open .faq-a { max-height: 400px; }
+  .faq-a-inner {
+    padding: 0 24px 22px;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.8;
+    border-top: 1px dashed var(--border);
+    padding-top: 18px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 80px 0;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(0, 255, 65, 0.04), transparent);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  }
+  .cta-section h2 {
+    font-family: var(--font-display); font-size: 2.4rem;
+    font-weight: 900; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .cta-section h2 .neon { color: var(--neon); text-shadow: var(--neon-glow); }
+  .cta-section p {
+    color: var(--text-dim); max-width: 600px;
+    margin: 0 auto 34px; font-size: 1rem;
+  }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: #000;
+    border-top: 1px solid var(--border);
+    padding: 60px 0 24px;
+    font-family: var(--font-mono);
+    position: relative;
+  }
+  footer::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon), var(--cyan), var(--neon), transparent);
+    opacity: 0.4;
+  }
+  .foot-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px; margin-bottom: 45px;
+  }
+  .foot-brand .logo { margin-bottom: 18px; font-size: 1.3rem; }
+  .foot-brand p { color: var(--text-dim); font-size: 0.82rem; line-height: 1.8; margin-bottom: 20px; }
+  .foot-col h4 {
+    font-family: var(--font-display); font-size: 0.9rem;
+    color: var(--neon); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px;
+    position: relative; padding-bottom: 10px;
+  }
+  .foot-col h4::before { content: '// '; opacity: 0.5; }
+  .foot-col h4::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 30px; height: 1px; background: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .foot-col li { margin-bottom: 11px; }
+  .foot-col li a {
+    color: var(--text-dim); transition: var(--transition);
+    font-size: 0.82rem; display: inline-flex;
+    align-items: center; gap: 6px;
+  }
+  .foot-col li a::before {
+    content: '›'; color: var(--neon);
+    transition: var(--transition); font-size: 1rem;
+    opacity: 0; margin-left: -12px;
+  }
+  .foot-col li a:hover { color: var(--neon); }
+  .foot-col li a:hover::before { opacity: 1; margin-left: 0; }
+  .foot-social { display: flex; gap: 10px; margin-top: 16px; }
+  .foot-social a {
+    width: 38px; height: 38px; border: 1px solid var(--border-bright);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-dim); transition: var(--transition);
+  }
+  .foot-social a:hover {
+    border-color: var(--neon); color: var(--neon);
+    box-shadow: var(--neon-glow); transform: translateY(-3px);
+  }
+  .foot-bottom {
+    padding-top: 26px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim);
+    font-size: 0.78rem; letter-spacing: 1px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .foot-bottom .blink-cursor::after {
+    content: '_'; color: var(--neon); animation: blink 1s infinite;
+  }
+
+  /* SCROLL TOP */
+  .scroll-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px;
+    background: var(--bg-darker); border: 1px solid var(--neon);
+    color: var(--neon); font-size: 1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition); opacity: 0; visibility: hidden;
+    z-index: 999; box-shadow: var(--neon-glow);
+  }
+  .scroll-top.visible { opacity: 1; visibility: visible; }
+  .scroll-top:hover {
+    background: var(--neon); color: var(--bg);
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  }
+  @media (max-width: 768px) {
+    .navbar .container { flex-wrap: wrap; gap: 14px; }
+    .menu { order: 3; width: 100%; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.78rem; border-top: 1px solid var(--border); padding-top: 16px; }
+    .nav-btns { margin-left: auto; }
+    .nav-btns .btn { padding: 8px 14px; font-size: 0.7rem; }
+    .course-hero h1 { font-size: 2rem; }
+    .section { padding: 60px 0; }
+    .section-head h2 { font-size: 1.75rem; }
+    .section-head .tag { font-size: 0.7rem; letter-spacing: 3px; }
+    .module-head { padding: 20px; gap: 14px; }
+    .module-num { font-size: 1.2rem; min-width: 44px; }
+    .module-head h3 { font-size: 0.95rem; }
+    .module-body-inner { padding-left: 20px; padding-right: 20px; }
+    .topic-list { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; gap: 30px; }
+    .foot-bottom { flex-direction: column; text-align: center; }
+    .statusbar .container { flex-direction: column; text-align: center; }
+    .statusbar-left { justify-content: center; }
+    .overview-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .course-hero h1 { font-size: 1.5rem; }
+    .section-head h2 { font-size: 1.4rem; }
+    .container { padding: 0 16px; }
+    .cta-btns { flex-direction: column; width: 100%; }
+    .cta-btns .btn { justify-content: center; width: 100%; }
+    .overview-strip { grid-template-columns: 1fr; }
+    .scroll-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <div class="container">
+    <div class="statusbar-left">
+      <span><span class="status-dot"></span> SYSTEM ONLINE</span>
+      <span>USER: <span style="color:var(--cyan);">GUEST@SECURE</span></span>
+      <span>SECTION: <span style="color:var(--yellow);">CURRICULUM</span></span>
+    </div>
+    <div class="statusbar-right">
+      <span class="blink">●</span> 8-MONTH PROGRAM
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="dashboard.html" class="logo">
+      <img src="logo.jpeg" alt="CyberSec" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shield-hal\'></i> CYBER<span class=\'dot\'>SEC</span>';">
+      CYBER<span class="dot">SEC</span>
+    </a>
+    <ul class="menu">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="course.html" class="active"><i class="fas fa-book"></i> Course</a></li>
+      <li><a href="team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="admission.html"><i class="fas fa-user-plus"></i> Admission</a></li>
+    </ul>
+    <div class="nav-btns">
+      <a href="create-account.html" class="btn"><i class="fas fa-sign-in-alt"></i> Sign Up</a>
+      <a href="admission.html" class="btn btn-fill"><i class="fas fa-rocket"></i> Enroll</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="course-hero">
+  <div class="container">
+    <span class="tag reveal">// 8-MONTH COMPREHENSIVE PROGRAM</span>
+    <h1 class="reveal">Cyber Security <span class="neon">Curriculum</span></h1>
+    <p class="reveal">From zero to Certified Ethical Hacker. A structured, hands-on journey through networking, Linux, web security, penetration testing, cloud security, and real-world projects.</p>
+    <div class="hero-actions reveal">
+      <a href="admission.html" class="btn btn-fill btn-lg"><i class="fas fa-rocket"></i> Enroll Now</a>
+      <a href="#modules" class="btn btn-lg"><i class="fas fa-list"></i> View Modules</a>
+    </div>
+
+    <div class="overview-strip">
+      <div class="overview-box reveal">
+        <i class="fas fa-clock"></i>
+        <h3>8</h3>
+        <p>Months Duration</p>
+      </div>
+      <div class="overview-box reveal">
+        <i class="fas fa-layer-group"></i>
+        <h3>8</h3>
+        <p>Core Modules</p>
+      </div>
+      <div class="overview-box reveal">
+        <i class="fas fa-laptop-code"></i>
+        <h3>100%</h3>
+        <p>Hands-On Labs</p>
+      </div>
+      <div class="overview-box reveal">
+        <i class="fas fa-certificate"></i>
+        <h3>CEH</h3>
+        <p>Exam Ready</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="section" id="modules">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">// WHAT YOU WILL LEARN</span>
+      <h2>Course <span class="neon">Modules</span></h2>
+      <p>Eight progressive modules designed to take you from fundamentals to advanced offensive security.</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- MODULE 1 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">01</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 1 · Foundation</div>
+          <h3>Networking & OS Fundamentals</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">Build a rock-solid foundation in computer networking and operating systems — the backbone of every cyber security career. Understand how data travels, how devices communicate, and how to navigate Linux like a pro.</p>
+          <ul class="topic-list">
+            <li>OSI & TCP/IP Models</li>
+            <li>IP Addressing & Subnetting</li>
+            <li>DNS, DHCP, HTTP/HTTPS</li>
+            <li>Routing & Switching Basics</li>
+            <li>Linux Command Line Mastery</li>
+            <li>File Permissions & Users</li>
+            <li>Windows OS Architecture</li>
+            <li>Virtualization (VMware, VirtualBox)</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">Wireshark</span>
+            <span class="tool-chip">Kali Linux</span>
+            <span class="tool-chip">VirtualBox</span>
+            <span class="tool-chip">Cisco Packet Tracer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">02</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 2 · Security Basics</div>
+          <h3>Cyber Security Essentials</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">Understand the threat landscape, security principles, and the mindset of an attacker and defender. Learn cryptography fundamentals and how real-world attacks unfold.</p>
+          <ul class="topic-list">
+            <li>CIA Triad & Security Principles</li>
+            <li>Threat Actors & Attack Vectors</li>
+            <li>Malware Types & Analysis</li>
+            <li>Cryptography (Symmetric/Asymmetric)</li>
+            <li>Hashing & Digital Signatures</li>
+            <li>PKI & SSL/TLS</li>
+            <li>Social Engineering Attacks</li>
+            <li>Incident Response Basics</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">OpenSSL</span>
+            <span class="tool-chip">HashCat</span>
+            <span class="tool-chip">John the Ripper</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">03</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 3 · Recon</div>
+          <h3>Reconnaissance & Footprinting</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">Information gathering is 80% of hacking. Learn passive and active reconnaissance, OSINT techniques, and how to map a target's entire digital footprint.</p>
+          <ul class="topic-list">
+            <li>Passive vs Active Recon</li>
+            <li>Google Dorking</li>
+            <li>WHOIS, DNS Enumeration</li>
+            <li>Subdomain Enumeration</li>
+            <li>Email & Social Media OSINT</li>
+            <li>Shodan & Censys</li>
+            <li>Network Scanning with Nmap</li>
+            <li>Vulnerability Scanning</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">Nmap</span>
+            <span class="tool-chip">Shodan</span>
+            <span class="tool-chip">Maltego</span>
+            <span class="tool-chip">theHarvester</span>
+            <span class="tool-chip">Sublist3r</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">04</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 4 · Offensive</div>
+          <h3>System Hacking & Exploitation</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">Step into the attacker's shoes. Learn password cracking, privilege escalation, malware deployment, and how to exploit vulnerable systems in controlled lab environments.</p>
+          <ul class="topic-list">
+            <li>Password Cracking Techniques</li>
+            <li>Privilege Escalation (Linux/Windows)</li>
+            <li>Metasploit Framework</li>
+            <li>Payload Generation</li>
+            <li>Persistence & Backdoors</li>
+            <li>Covering Tracks</li>
+            <li>Buffer Overflow Basics</li>
+            <li>Post-Exploitation</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">Metasploit</span>
+            <span class="tool-chip">msfvenom</span>
+            <span class="tool-chip">Hydra</span>
+            <span class="tool-chip">LinPEAS</span>
+            <span class="tool-chip">WinPEAS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">05</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 5 · Web Security</div>
+          <h3>Web Application Penetration Testing</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">The most in-demand skill in cyber security. Master the OWASP Top 10, manual testing with Burp Suite, and how to find and exploit real web vulnerabilities.</p>
+          <ul class="topic-list">
+            <li>OWASP Top 10 Deep Dive</li>
+            <li>SQL Injection (Manual + Automated)</li>
+            <li>Cross-Site Scripting (XSS)</li>
+            <li>CSRF & SSRF</li>
+            <li>IDOR & Broken Access Control</li>
+            <li>File Upload Vulnerabilities</li>
+            <li>Authentication & Session Flaws</li>
+            <li>API Security Testing</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">Burp Suite</span>
+            <span class="tool-chip">OWASP ZAP</span>
+            <span class="tool-chip">sqlmap</span>
+            <span class="tool-chip">Postman</span>
+            <span class="tool-chip">FFUF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 6 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">06</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 6 · Network Security</div>
+          <h3>Network & Wireless Security</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">Attack and defend enterprise networks. Learn packet analysis, MITM attacks, Wi-Fi cracking, firewall evasion, and how to secure network infrastructure.</p>
+          <ul class="topic-list">
+            <li>Packet Analysis with Wireshark</li>
+            <li>ARP Spoofing & MITM</li>
+            <li>DNS Spoofing</li>
+            <li>Wi-Fi Security (WPA/WPA2/WPA3)</li>
+            <li>Evil Twin & Rogue AP</li>
+            <li>Firewall & IDS/IPS Evasion</li>
+            <li>VPN & Tunneling</li>
+            <li>Network Hardening</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">Aircrack-ng</span>
+            <span class="tool-chip">Bettercap</span>
+            <span class="tool-chip">Wireshark</span>
+            <span class="tool-chip">Ettercap</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 7 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">07</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 7 · Cloud & DevOps</div>
+          <h3>Cloud Security & DevSecOps</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">Modern infrastructure lives in the cloud. Learn AWS/Azure security, container security, CI/CD pipeline hardening, and how to integrate security into DevOps workflows.</p>
+          <ul class="topic-list">
+            <li>Cloud Fundamentals (AWS/Azure)</li>
+            <li>IAM & Access Control</li>
+            <li>S3 Bucket Misconfigurations</li>
+            <li>Docker & Container Security</li>
+            <li>Kubernetes Security Basics</li>
+            <li>CI/CD Pipeline Security</li>
+            <li>Infrastructure as Code Security</li>
+            <li>Cloud Logging & Monitoring</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">AWS CLI</span>
+            <span class="tool-chip">Docker</span>
+            <span class="tool-chip">Kubernetes</span>
+            <span class="tool-chip">Terraform</span>
+            <span class="tool-chip">Trivy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 8 -->
+    <div class="module reveal">
+      <div class="module-head">
+        <div class="module-num">08</div>
+        <div class="module-title-wrap">
+          <div class="module-meta">Month 8 · Capstone</div>
+          <h3>Bug Bounty, Reporting & CEH Prep</h3>
+        </div>
+        <div class="module-toggle"><i class="fas fa-plus"></i></div>
+      </div>
+      <div class="module-body">
+        <div class="module-body-inner">
+          <p class="module-desc">Put everything together. Hunt real bugs on legal platforms, write professional penetration testing reports, and prepare for the CEH certification exam with mock tests.</p>
+          <ul class="topic-list">
+            <li>Bug Bounty Platforms (HackerOne, Bugcrowd)</li>
+            <li>Recon Automation</li>
+            <li>Report Writing & CVSS Scoring</li>
+            <li>Client Communication</li>
+            <li>CEH Exam Blueprint</li>
+            <li>Mock Tests & Practice Labs</li>
+            <li>Capstone Project</li>
+            <li>Resume & Interview Prep</li>
+          </ul>
+          <div class="module-tools">
+            <span class="tool-chip">HackerOne</span>
+            <span class="tool-chip">Bugcrowd</span>
+            <span class="tool-chip">Nuclei</span>
+            <span class="tool-chip">Recon-ng</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">// AFTER COMPLETION</span>
+      <h2>What You Will <span class="neon">Achieve</span></h2>
+      <p>By the end of this program, you'll have job-ready skills and a portfolio that proves it.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <i class="fas fa-shield-alt"></i>
+        <h4>Offensive Security Skills</h4>
+        <p>Perform full penetration tests on web apps, networks, and cloud infrastructure with confidence.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <i class="fas fa-bug"></i>
+        <h4>Real Bug Bounty Experience</h4>
+        <p>Find and report real vulnerabilities on legal platforms — build a public hacker profile.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <i class="fas fa-certificate"></i>
+        <h4>CEH Exam Ready</h4>
+        <p>Complete preparation aligned with EC-Council's CEH blueprint, including mock exams.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <i class="fas fa-file-alt"></i>
+        <h4>Professional Reports</h4>
+        <p>Write industry-standard pentest reports with CVSS scoring and executive summaries.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <i class="fas fa-briefcase"></i>
+        <h4>Job-Ready Portfolio</h4>
+        <p>Graduate with real projects, certifications, and a resume tailored for security roles.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <i class="fas fa-users"></i>
+        <h4>Community Access</h4>
+        <p>Join our alumni Discord — lifetime access to mentors, job leads, and study groups.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">// ENROLLMENT PLANS</span>
+      <h2>Choose Your <span class="neon">Plan</span></h2>
+      <p>Flexible payment options. All plans include lifetime access to recorded sessions.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-name">Basic</div>
+        <div class="price-desc">Self-Paced Learning</div>
+        <div class="price-amount">₹20,000</div>
+        <div class="price-period">One-time payment</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> All 8 modules (recorded)</li>
+          <li><i class="fas fa-check"></i> Lab setup guides</li>
+          <li><i class="fas fa-check"></i> Community Discord access</li>
+          <li class="muted"><i class="fas fa-times"></i> Live sessions</li>
+          <li class="muted"><i class="fas fa-times"></i> 1-on-1 mentorship</li>
+          <li class="muted"><i class="fas fa-times"></i> Certificate of completion</li>
+        </ul>
+        <a href="admission.html" class="btn" style="justify-content:center;"><i class="fas fa-shopping-cart"></i> Choose Basic</a>
+      </div>
+
+      <div class="price-card featured reveal">
+        <div class="price-name">Pro</div>
+        <div class="price-desc">Most Popular Choice</div>
+        <div class="price-amount">₹29,999</div>
+        <div class="price-period">One-time payment · EMI available</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> All 8 modules (recorded + live)</li>
+          <li><i class="fas fa-check"></i> Weekly live Q&A sessions</li>
+          <li><i class="fas fa-check"></i> Hands-on lab access</li>
+          <li><i class="fas fa-check"></i> Community Discord access</li>
+          <li><i class="fas fa-check"></i> Certificate of completion</li>
+          <li class="muted"><i class="fas fa-times"></i> 1-on-1 mentorship</li>
+        </ul>
+        <a href="admission.html" class="btn btn-fill" style="justify-content:center;"><i class="fas fa-rocket"></i> Choose Pro</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-name">Elite</div>
+        <div class="price-desc">1-on-1 Mentorship</div>
+        <div class="price-amount">₹49,999</div>
+        <div class="price-period">One-time payment · EMI available</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> Everything in Pro</li>
+          <li><i class="fas fa-check"></i> 1-on-1 weekly mentorship</li>
+          <li><i class="fas fa-check"></i> Career guidance & resume review</li>
+          <li><i class="fas fa-check"></i> Internship/job referrals</li>
+          <li><i class="fas fa-check"></i> CEH exam voucher discount</li>
+          <li><i class="fas fa-check"></i> Priority doubt support</li>
+        </ul>
+        <a href="admission.html" class="btn" style="justify-content:center;"><i class="fas fa-crown"></i> Choose Elite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">// COMMON QUESTIONS</span>
+      <h2>Frequently Asked <span class="neon">Questions</span></h2>
+      <p>Everything you need to know before enrolling.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>Do I need prior coding or IT experience?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No prior experience is required. Module 1 starts from absolute basics — networking, Linux, and OS fundamentals. If you can use a computer, you can learn cyber security with us.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>Is the course live or recorded?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Both. Every module includes recorded lessons you can watch anytime, plus weekly live sessions for Q&A, doubt clearing, and hands-on labs. Recordings are available for lifetime access.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>Will this prepare me for the CEH exam?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. Module 8 is dedicated to CEH preparation, including blueprint coverage, mock tests, and practice labs. The course aligns with EC-Council's CEH v12 objectives. Exam voucher is not included but we provide guidance on booking.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>What tools and labs will I get access to?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            You'll get hands-on access to Kali Linux, Burp Suite, Metasploit, Nmap, Wireshark, Docker, AWS free tier, and a curated set of vulnerable labs (TryHackMe, HackTheBox style) for safe practice.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>Is there a certificate after completion?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. All plans include a verifiable Certificate of Completion from CyberSec Academy. The Elite plan also includes CEH exam voucher discounts and internship/job referrals.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span>What if I get stuck or need help?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            You'll have access to our Discord community where instructors and alumni help daily. Pro and Elite plans include dedicated doubt-clearing sessions. Elite gets 1-on-1 weekly mentorship.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="reveal">
+      <h2>Ready to Start Your <span class="neon">Cyber Journey</span>?</h2>
+      <p>Join the next batch and master ethical hacking with hands-on training from a Certified Ethical Hacker.</p>
+      <div class="cta-btns">
+        <a href="admission.html" class="btn btn-fill btn-lg"><i class="fas fa-rocket"></i> Apply Now</a>
+        <a href="team.html" class="btn btn-lg"><i class="fas fa-users"></i> Meet Instructors</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="dashboard.html" class="logo">
+          <img src="logo.jpeg" alt="CyberSec" onerror="this.style.display='none';">
+          CYBER<span class="dot">SEC</span>
+        </a>
+        <p>World-class cyber security training designed for beginners and professionals. Master ethical hacking with our 8-month comprehensive program.</p>
+        <div class="foot-social">
+          <a href="https://github.com/Rg100152" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/linux.userraj" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="course.html">Course</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="admission.html">Admission</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Profiles</h4>
+        <ul>
+          <li><a href="raj.html">Raj Gautam</a></li>
+          <li><a href="ankit.html">Ankit Maurya</a></li>
+          <li><a href="create-account.html">Create Account</a></li>
+          <li><a href="course.html">All Modules</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://github.com/Rg100152" target="_blank">→ GitHub</a></li>
+          <li><a href="https://instagram.com/linux.userraj" target="_blank">→ Instagram</a></li>
+          <li><a href="#">→ YouTube</a></li>
+          <li><a href="#">→ Discord</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="blink-cursor">root@cybersec:~# cat /copyright.txt → © 2026 CyberSec Academy</span>
+      <span>8-Month Program · CEH Aligned · Hands-On Labs</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  'use strict';
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Reveal animations
+  function initReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('active'), i * 70);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  }
+  initReveal();
+
+  // Module accordion
+  document.querySelectorAll('.module-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const module = head.parentElement;
+      const isOpen = module.classList.contains('open');
+      // close all
+      document.querySelectorAll('.module').forEach(m => m.classList.remove('open'));
+      // open clicked (if wasn't open)
+      if (!isOpen) module.classList.add('open');
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Cursor glow
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.style.cssText = `
+      position: fixed; width: 8px; height: 8px;
+      background: rgba(0, 255, 65, 0.6); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+      transition: transform 0.15s ease-in-out;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+    `;
+    document.body.appendChild(glow);
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  }
+
+  // Console easter egg
+  console.log('%c⚡ CYBERSEC ACADEMY — COURSE', 'color:#00ff41; font-size:24px; font-weight:900; text-shadow: 0 0 20px rgba(0,255,65,0.8);');
+  console.log('%c8 Modules · CEH Aligned · 100% Hands-On', 'color:#00d9ff; font-size:13px;');
+  console.log('%cEnroll: admission.html', 'color:#ffcc00; font-size:12px;');
+</script>
+</body>
+</html>

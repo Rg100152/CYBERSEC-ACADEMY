@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Apply for admission to CyberSec Academy's 8-month Cyber Security program. Simple 3-step application.">
+<title>Admission | CyberSec Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --neon: #00ff41;
+    --neon-bright: #39ff6e;
+    --neon-dim: #00cc33;
+    --neon-dark: #008822;
+    --neon-glow: 0 0 12px rgba(0, 255, 65, 0.6);
+    --neon-glow-lg: 0 0 30px rgba(0, 255, 65, 0.4);
+    --cyan: #00d9ff;
+    --cyan-glow: 0 0 12px rgba(0, 217, 255, 0.6);
+    --red: #ff3333;
+    --yellow: #ffcc00;
+    --orange: #ff8800;
+    --purple: #b366ff;
+    --bg: #0a0e0a;
+    --bg-dark: #050805;
+    --bg-darker: #020302;
+    --bg-card: #0f1410;
+    --bg-card-hover: #141a16;
+    --border: #1a2f1e;
+    --border-bright: #2a4a32;
+    --text: #d4ffd9;
+    --text-dim: #6b8a72;
+    --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      linear-gradient(rgba(0, 255, 65, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ul { list-style: none; }
+  .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--neon-dark); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--neon); }
+  ::selection { background: var(--neon); color: var(--bg); }
+
+  /* STATUS BAR */
+  .statusbar {
+    background: #000; padding: 8px 0;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--neon); letter-spacing: 0.5px;
+    position: relative; z-index: 1001;
+  }
+  .statusbar::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    animation: scanline 4s linear infinite;
+  }
+  @keyframes scanline { 0%{transform:translateX(-100%);} 100%{transform:translateX(100%);} }
+  .statusbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .statusbar-left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .status-dot {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--neon); border-radius: 50%;
+    box-shadow: var(--neon-glow); animation: pulse-dot 1.5s infinite;
+  }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(1.3);} }
+  .blink { animation: blink 1s infinite; }
+  @keyframes blink { 50%{opacity:0.2;} }
+
+  /* NAVBAR */
+  .navbar {
+    background: rgba(5, 8, 5, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    position: sticky; top: 0; z-index: 1000;
+    transition: var(--transition);
+  }
+  .navbar.scrolled {
+    padding: 12px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-bottom-color: var(--border-bright);
+  }
+  .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+    color: var(--neon); letter-spacing: 2px;
+    text-shadow: var(--neon-glow); transition: var(--transition);
+  }
+  .logo img {
+    width: 40px; height: 40px; border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .logo .dot { color: var(--neon-dim); }
+  .logo:hover { letter-spacing: 3px; }
+
+  .menu { display: flex; gap: 32px; font-family: var(--font-mono); font-size: 0.85rem; }
+  .menu a {
+    color: var(--text-dim); letter-spacing: 1.5px;
+    text-transform: uppercase; transition: var(--transition);
+    position: relative; padding: 6px 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .menu a::before {
+    content: '>'; color: var(--neon); opacity: 0;
+    margin-left: -12px; transition: var(--transition); font-weight: bold;
+  }
+  .menu a:hover, .menu a.active { color: var(--neon); text-shadow: var(--neon-glow); }
+  .menu a:hover::before, .menu a.active::before { opacity: 1; margin-left: 0; }
+  .menu a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--neon);
+    box-shadow: var(--neon-glow); transition: var(--transition);
+  }
+  .menu a:hover::after, .menu a.active::after { width: 100%; }
+  .nav-btns { display: flex; gap: 10px; }
+
+  /* BUTTONS */
+  .btn {
+    font-family: var(--font-mono); font-size: 0.8rem;
+    padding: 11px 24px; cursor: pointer;
+    transition: var(--transition); letter-spacing: 1.5px;
+    text-transform: uppercase; border: 1px solid var(--neon);
+    background: transparent; color: var(--neon);
+    display: inline-flex; align-items: center; gap: 8px;
+    position: relative; overflow: hidden; font-weight: 400;
+  }
+  .btn::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%; background: var(--neon);
+    transition: var(--transition); z-index: -1;
+  }
+  .btn:hover::before { left: 0; }
+  .btn:hover { color: var(--bg); box-shadow: var(--neon-glow-lg); transform: translateY(-2px); }
+  .btn-fill {
+    background: var(--neon); color: var(--bg); font-weight: 700;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  }
+  .btn-fill::before { background: var(--neon-bright); }
+  .btn-fill:hover { background: var(--neon-bright); box-shadow: 0 0 30px rgba(0, 255, 65, 0.8); }
+  .btn-lg { padding: 15px 32px; font-size: 0.9rem; }
+  .btn-block { width: 100%; justify-content: center; }
+
+  /* SECTION */
+  .section { padding: 80px 0; position: relative; }
+  .section-head { text-align: center; margin-bottom: 60px; }
+  .section-head .tag {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--neon); letter-spacing: 4px;
+    text-transform: uppercase; display: inline-block;
+    margin-bottom: 14px; padding: 6px 14px;
+    border: 1px solid var(--border-bright);
+    background: rgba(0, 255, 65, 0.03);
+  }
+  .section-head h2 {
+    font-family: var(--font-display); font-size: 2.5rem;
+    font-weight: 900; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .section-head h2 .neon { color: var(--neon); text-shadow: var(--neon-glow); }
+  .section-head p {
+    color: var(--text-dim); max-width: 620px;
+    margin: 0 auto; font-size: 1rem; line-height: 1.7;
+  }
+  .section-head .divider {
+    width: 80px; height: 2px; background: var(--neon);
+    box-shadow: var(--neon-glow); margin: 20px auto 0;
+    position: relative;
+  }
+  .section-head .divider::before,
+  .section-head .divider::after {
+    content: ''; position: absolute; top: 50%;
+    width: 6px; height: 6px; background: var(--neon);
+    transform: translateY(-50%) rotate(45deg);
+    box-shadow: var(--neon-glow);
+  }
+  .section-head .divider::before { left: -12px; }
+  .section-head .divider::after { right: -12px; }
+
+  /* HERO */
+  .admission-hero {
+    padding: 70px 0 50px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(0, 255, 65, 0.04) 0%, transparent 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .admission-hero::before {
+    content: ''; position: absolute; top: -30%; left: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0, 255, 65, 0.08), transparent 70%);
+    border-radius: 50%; animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-30px);} }
+  .admission-hero .container { position: relative; z-index: 2; }
+  .admission-hero .tag {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--neon); letter-spacing: 3px;
+    text-transform: uppercase; display: inline-block;
+    margin-bottom: 18px; padding: 6px 16px;
+    border: 1px solid var(--border-bright);
+    background: rgba(0, 255, 65, 0.05);
+  }
+  .admission-hero h1 {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .admission-hero h1 .neon { color: var(--neon); text-shadow: 0 0 20px rgba(0, 255, 65, 0.7); }
+  .admission-hero p {
+    color: var(--text-dim);
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  /* LAYOUT */
+  .admission-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--neon), var(--cyan), var(--neon));
+    box-shadow: var(--neon-glow);
+  }
+
+  /* STEPS INDICATOR */
+  .steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 22px; left: 12%;
+    right: 12%; height: 2px;
+    background: var(--border);
+    z-index: 1;
+  }
+  .steps-progress {
+    position: absolute;
+    top: 22px; left: 12%;
+    height: 2px;
+    background: var(--neon);
+    box-shadow: var(--neon-glow);
+    z-index: 2;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 3;
+    flex: 1;
+  }
+  .step-circle {
+    width: 46px; height: 46px;
+    border: 2px solid var(--border-bright);
+    background: var(--bg-darker);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--text-dim);
+    transition: var(--transition);
+    border-radius: 50%;
+  }
+  .step-item.active .step-circle {
+    border-color: var(--neon);
+    color: var(--neon);
+    box-shadow: var(--neon-glow);
+    background: rgba(0, 255, 65, 0.08);
+  }
+  .step-item.completed .step-circle {
+    background: var(--neon);
+    color: var(--bg);
+    border-color: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .step-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: var(--transition);
+  }
+  .step-item.active .step-label, .step-item.completed .step-label {
+    color: var(--neon);
+  }
+
+  /* FORM STEP CONTENT */
+  .form-step {
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+  .form-step.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .form-step-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .form-step-title .neon { color: var(--neon); text-shadow: var(--neon-glow); }
+  .form-step-sub {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  /* FORM FIELDS */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .form-label .req { color: var(--red); font-size: 0.9rem; }
+  .form-label i { color: var(--neon); font-size: 0.8rem; }
+
+  .form-input, .form-select, .form-textarea {
+    background: var(--bg-darker);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 13px 16px;
+    transition: var(--transition);
+    width: 100%;
+    outline: none;
+  }
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text-dim);
+    opacity: 0.6;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.1), var(--neon-glow);
+    background: rgba(0, 255, 65, 0.02);
+  }
+  .form-input.error, .form-select.error, .form-textarea.error {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.1);
+  }
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: var(--font-body);
+  }
+  .form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300ff41' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .form-select option {
+    background: var(--bg-darker);
+    color: var(--text);
+  }
+  .error-msg {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--red);
+    letter-spacing: 0.5px;
+    display: none;
+    align-items: center;
+    gap: 5px;
+  }
+  .error-msg.show { display: flex; }
+  .error-msg::before { content: '⚠'; }
+
+  /* CHECKBOX / RADIO */
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    background: var(--bg-darker);
+    transition: var(--transition);
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .check-item:hover {
+    border-color: var(--border-bright);
+    background: var(--bg-card-hover);
+  }
+  .check-item input {
+    appearance: none;
+    width: 18px; height: 18px;
+    border: 2px solid var(--border-bright);
+    background: var(--bg-darker);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .check-item input[type="radio"] { border-radius: 50%; }
+  .check-item input[type="checkbox"]:checked,
+  .check-item input[type="radio"]:checked {
+    background: var(--neon);
+    border-color: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .check-item input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+  .check-item input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--bg);
+  }
+  .check-item.checked {
+    border-color: var(--neon);
+    color: var(--text);
+    background: rgba(0, 255, 65, 0.04);
+  }
+
+  /* PLAN SELECT */
+  .plan-select {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .plan-option {
+    border: 1px solid var(--border);
+    background: var(--bg-darker);
+    padding: 18px 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    text-align: left;
+  }
+  .plan-option:hover {
+    border-color: var(--border-bright);
+    background: var(--bg-card-hover);
+  }
+  .plan-option.selected {
+    border-color: var(--neon);
+    background: rgba(0, 255, 65, 0.06);
+    box-shadow: var(--neon-glow);
+  }
+  .plan-option input { display: none; }
+  .plan-option .plan-name {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 6px;
+    transition: var(--transition);
+  }
+  .plan-option.selected .plan-name { color: var(--neon); }
+  .plan-option .plan-price {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .plan-option .plan-note {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* FORM NAV */
+  .form-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--border);
+    flex-wrap: wrap;
+  }
+  .form-nav .btn { min-width: 140px; justify-content: center; }
+
+  /* SUCCESS */
+  .success-box {
+    display: none;
+    text-align: center;
+    padding: 30px 10px;
+    animation: fadeIn 0.6s ease;
+  }
+  .success-box.show { display: block; }
+  .success-icon {
+    width: 90px; height: 90px;
+    margin: 0 auto 24px;
+    border: 3px solid var(--neon);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon);
+    font-size: 2.5rem;
+    box-shadow: var(--neon-glow-lg);
+    animation: pulse-dot 2s infinite;
+  }
+  .success-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    margin-bottom: 14px;
+  }
+  .success-box p {
+    color: var(--text-dim);
+    max-width: 480px;
+    margin: 0 auto 24px;
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+  .success-ref {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--cyan);
+    background: var(--bg-darker);
+    border: 1px dashed var(--border-bright);
+    padding: 14px 20px;
+    display: inline-block;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .success-ref strong { color: var(--neon); }
+
+  /* SIDEBAR */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 100px;
+  }
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .info-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .info-card:hover {
+    border-color: var(--neon);
+    box-shadow: 0 15px 40px rgba(0, 255, 65, 0.1);
+  }
+  .info-card h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--neon);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .info-card h4 i { font-size: 0.9rem; }
+  .info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .info-list li i {
+    color: var(--neon);
+    font-size: 0.7rem;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .info-list li strong { color: var(--text); }
+
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    transition: var(--transition);
+  }
+  .contact-line i {
+    width: 34px; height: 34px;
+    border: 1px solid var(--border-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    transition: var(--transition);
+  }
+  .contact-line:hover { color: var(--neon); }
+  .contact-line:hover i {
+    background: var(--neon);
+    color: var(--bg);
+    box-shadow: var(--neon-glow);
+  }
+
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .trust-badge:last-child { border-bottom: none; }
+  .trust-badge i {
+    color: var(--neon);
+    font-size: 0.9rem;
+    width: 20px;
+    text-align: center;
+  }
+  .trust-badge strong { color: var(--text); }
+
+  /* FAQ MINI */
+  .mini-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mini-faq-item {
+    border: 1px solid var(--border);
+    background: var(--bg-darker);
+    transition: var(--transition);
+  }
+  .mini-faq-q {
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    transition: var(--transition);
+    user-select: none;
+  }
+  .mini-faq-q:hover, .mini-faq-item.open .mini-faq-q { color: var(--neon); }
+  .mini-faq-q i {
+    color: var(--neon);
+    font-size: 0.7rem;
+    transition: var(--transition);
+    flex-shrink: 0;
+  }
+  .mini-faq-item.open .mini-faq-q i { transform: rotate(180deg); }
+  .mini-faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .mini-faq-item.open .mini-faq-a { max-height: 300px; }
+  .mini-faq-a-inner {
+    padding: 0 16px 16px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 80px 0;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(0, 255, 65, 0.04), transparent);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  }
+  .cta-section h2 {
+    font-family: var(--font-display); font-size: 2.4rem;
+    font-weight: 900; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .cta-section h2 .neon { color: var(--neon); text-shadow: var(--neon-glow); }
+  .cta-section p {
+    color: var(--text-dim); max-width: 600px;
+    margin: 0 auto 34px; font-size: 1rem;
+  }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: #000;
+    border-top: 1px solid var(--border);
+    padding: 60px 0 24px;
+    font-family: var(--font-mono);
+    position: relative;
+  }
+  footer::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon), var(--cyan), var(--neon), transparent);
+    opacity: 0.4;
+  }
+  .foot-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px; margin-bottom: 45px;
+  }
+  .foot-brand .logo { margin-bottom: 18px; font-size: 1.3rem; }
+  .foot-brand p { color: var(--text-dim); font-size: 0.82rem; line-height: 1.8; margin-bottom: 20px; }
+  .foot-col h4 {
+    font-family: var(--font-display); font-size: 0.9rem;
+    color: var(--neon); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px;
+    position: relative; padding-bottom: 10px;
+  }
+  .foot-col h4::before { content: '// '; opacity: 0.5; }
+  .foot-col h4::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 30px; height: 1px; background: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .foot-col li { margin-bottom: 11px; }
+  .foot-col li a {
+    color: var(--text-dim); transition: var(--transition);
+    font-size: 0.82rem; display: inline-flex;
+    align-items: center; gap: 6px;
+  }
+  .foot-col li a::before {
+    content: '›'; color: var(--neon);
+    transition: var(--transition); font-size: 1rem;
+    opacity: 0; margin-left: -12px;
+  }
+  .foot-col li a:hover { color: var(--neon); }
+  .foot-col li a:hover::before { opacity: 1; margin-left: 0; }
+  .foot-social { display: flex; gap: 10px; margin-top: 16px; }
+  .foot-social a {
+    width: 38px; height: 38px; border: 1px solid var(--border-bright);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-dim); transition: var(--transition);
+  }
+  .foot-social a:hover {
+    border-color: var(--neon); color: var(--neon);
+    box-shadow: var(--neon-glow); transform: translateY(-3px);
+  }
+  .foot-bottom {
+    padding-top: 26px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim);
+    font-size: 0.78rem; letter-spacing: 1px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .foot-bottom .blink-cursor::after {
+    content: '_'; color: var(--neon); animation: blink 1s infinite;
+  }
+
+  /* SCROLL TOP */
+  .scroll-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px;
+    background: var(--bg-darker); border: 1px solid var(--neon);
+    color: var(--neon); font-size: 1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition); opacity: 0; visibility: hidden;
+    z-index: 999; box-shadow: var(--neon-glow);
+  }
+  .scroll-top.visible { opacity: 1; visibility: visible; }
+  .scroll-top:hover {
+    background: var(--neon); color: var(--bg);
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .admission-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  }
+  @media (max-width: 768px) {
+    .navbar .container { flex-wrap: wrap; gap: 14px; }
+    .menu { order: 3; width: 100%; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.78rem; border-top: 1px solid var(--border); padding-top: 16px; }
+    .nav-btns { margin-left: auto; }
+    .nav-btns .btn { padding: 8px 14px; font-size: 0.7rem; }
+    .admission-hero h1 { font-size: 2rem; }
+    .section { padding: 60px 0; }
+    .section-head h2 { font-size: 1.75rem; }
+    .section-head .tag { font-size: 0.7rem; letter-spacing: 3px; }
+    .form-card { padding: 26px 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .step-label { font-size: 0.6rem; }
+    .step-circle { width: 38px; height: 38px; font-size: 0.85rem; }
+    .steps::before, .steps-progress { top: 18px; }
+    .plan-select { grid-template-columns: 1fr; }
+    .form-nav { flex-direction: column-reverse; }
+    .form-nav .btn { width: 100%; }
+    .foot-grid { grid-template-columns: 1fr; gap: 30px; }
+    .foot-bottom { flex-direction: column; text-align: center; }
+    .statusbar .container { flex-direction: column; text-align: center; }
+    .statusbar-left { justify-content: center; }
+  }
+  @media (max-width: 480px) {
+    .admission-hero h1 { font-size: 1.5rem; }
+    .section-head h2 { font-size: 1.4rem; }
+    .container { padding: 0 16px; }
+    .form-card { padding: 22px 16px; }
+    .cta-btns { flex-direction: column; width: 100%; }
+    .cta-btns .btn { justify-content: center; width: 100%; }
+    .scroll-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+    .step-label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <div class="container">
+    <div class="statusbar-left">
+      <span><span class="status-dot"></span> SYSTEM ONLINE</span>
+      <span>USER: <span style="color:var(--cyan);">GUEST@SECURE</span></span>
+      <span>SECTION: <span style="color:var(--yellow);">ADMISSION</span></span>
+    </div>
+    <div class="statusbar-right">
+      <span class="blink">●</span> ENROLLMENT OPEN
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="dashboard.html" class="logo">
+      <img src="logo.jpeg" alt="CyberSec" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shield-hal\'></i> CYBER<span class=\'dot\'>SEC</span>';">
+      CYBER<span class="dot">SEC</span>
+    </a>
+    <ul class="menu">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="course.html"><i class="fas fa-book"></i> Course</a></li>
+      <li><a href="team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="admission.html" class="active"><i class="fas fa-user-plus"></i> Admission</a></li>
+    </ul>
+    <div class="nav-btns">
+      <a href="create-account.html" class="btn"><i class="fas fa-sign-in-alt"></i> Sign Up</a>
+      <a href="#apply" class="btn btn-fill"><i class="fas fa-rocket"></i> Apply</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="admission-hero">
+  <div class="container">
+    <span class="tag reveal">// ENROLLMENT OPEN · LIMITED SEATS</span>
+    <h1 class="reveal">Apply for <span class="neon">Admission</span></h1>
+    <p class="reveal">Join the next batch of CyberSec Academy. Fill the form below — it takes less than 3 minutes. Our team will reach out within 24 hours.</p>
+  </div>
+</section>
+
+<!-- FORM + SIDEBAR -->
+<section class="section" id="apply">
+  <div class="container">
+    <div class="admission-layout">
+
+      <!-- FORM CARD -->
+      <div class="form-card reveal">
+        <!-- STEP INDICATOR -->
+        <div class="steps" id="stepsIndicator">
+          <div class="steps-progress" id="stepsProgress"></div>
+          <div class="step-item active" data-step="1">
+            <div class="step-circle">1</div>
+            <div class="step-label">Personal</div>
+          </div>
+          <div class="step-item" data-step="2">
+            <div class="step-circle">2</div>
+            <div class="step-label">Background</div>
+          </div>
+          <div class="step-item" data-step="3">
+            <div class="step-circle">3</div>
+            <div class="step-label">Plan</div>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <form id="admissionForm" novalidate>
+
+          <!-- STEP 1: PERSONAL -->
+          <div class="form-step active" data-step="1">
+            <div class="form-step-title">Step 1 — <span class="neon">Personal Details</span></div>
+            <div class="form-step-sub">// Tell us who you are</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Full Name <span class="req">*</span></label>
+                <input type="text" class="form-input" id="fullName" placeholder="Enter your full name" required>
+                <span class="error-msg" id="err-fullName">Full name is required</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-calendar"></i> Date of Birth <span class="req">*</span></label>
+                <input type="date" class="form-input" id="dob" required>
+                <span class="error-msg" id="err-dob">Date of birth is required</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address <span class="req">*</span></label>
+                <input type="email" class="form-input" id="email" placeholder="you@example.com" required>
+                <span class="error-msg" id="err-email">Valid email is required</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Phone Number <span class="req">*</span></label>
+                <input type="tel" class="form-input" id="phone" placeholder="10-digit mobile number" maxlength="10" required>
+                <span class="error-msg" id="err-phone">Valid 10-digit phone required</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-map-marker-alt"></i> City <span class="req">*</span></label>
+                <input type="text" class="form-input" id="city" placeholder="Your city" required>
+                <span class="error-msg" id="err-city">City is required</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-map"></i> State <span class="req">*</span></label>
+                <select class="form-select" id="state" required>
+                  <option value="">Select your state</option>
+                  <option>Andhra Pradesh</option>
+                  <option>Assam</option>
+                  <option>Bihar</option>
+                  <option>Delhi</option>
+                  <option>Gujarat</option>
+                  <option>Haryana</option>
+                  <option>Karnataka</option>
+                  <option>Kerala</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Maharashtra</option>
+                  <option>Punjab</option>
+                  <option>Rajasthan</option>
+                  <option>Tamil Nadu</option>
+                  <option>Telangana</option>
+                  <option>Uttar Pradesh</option>
+                  <option>West Bengal</option>
+                  <option>Other</option>
+                </select>
+                <span class="error-msg" id="err-state">State is required</span>
+              </div>
+            </div>
+
+            <div class="form-nav">
+              <span></span>
+              <button type="button" class="btn btn-fill" onclick="nextStep(1)">
+                Next: Background <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: BACKGROUND -->
+          <div class="form-step" data-step="2">
+            <div class="form-step-title">Step 2 — <span class="neon">Your Background</span></div>
+            <div class="form-step-sub">// Help us understand your current level</div>
+
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-graduation-cap"></i> Highest Qualification <span class="req">*</span></label>
+              <select class="form-select" id="qualification" required>
+                <option value="">Select qualification</option>
+                <option>10th Pass</option>
+                <option>12th Pass</option>
+                <option>Diploma</option>
+                <option>BCA / B.Sc / B.Tech (Pursuing)</option>
+                <option>BCA / B.Sc / B.Tech (Completed)</option>
+                <option>MCA / M.Sc / M.Tech</option>
+                <option>Other</option>
+              </select>
+              <span class="error-msg" id="err-qualification">Qualification is required</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-laptop-code"></i> Do you have prior IT / Coding experience? <span class="req">*</span></label>
+              <div class="checkbox-group">
+                <label class="check-item">
+                  <input type="radio" name="experience" value="No experience at all" required>
+                  <span>No experience — complete beginner</span>
+                </label>
+                <label class="check-item">
+                  <input type="radio" name="experience" value="Basic computer knowledge">
+                  <span>Basic computer knowledge only</span>
+                </label>
+                <label class="check-item">
+                  <input type="radio" name="experience" value="Some coding/IT experience">
+                  <span>Some coding or IT experience</span>
+                </label>
+                <label class="check-item">
+                  <input type="radio" name="experience" value="Working in IT/Security field">
+                  <span>Working in IT / Security field</span>
+                </label>
+              </div>
+              <span class="error-msg" id="err-experience">Please select your experience level</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-bullseye"></i> Why do you want to learn Cyber Security? <span class="req">*</span></label>
+              <textarea class="form-textarea" id="motivation" placeholder="Tell us in 2-3 lines what motivates you..." required></textarea>
+              <span class="error-msg" id="err-motivation">Please tell us your motivation (min 20 chars)</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-clock"></i> Preferred Batch Timing <span class="req">*</span></label>
+                <select class="form-select" id="batch" required>
+                  <option value="">Select timing</option>
+                  <option>Morning (7 AM – 10 AM)</option>
+                  <option>Afternoon (12 PM – 3 PM)</option>
+                  <option>Evening (6 PM – 9 PM)</option>
+                  <option>Weekend Only</option>
+                </select>
+                <span class="error-msg" id="err-batch">Batch timing is required</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-globe"></i> Preferred Mode <span class="req">*</span></label>
+                <select class="form-select" id="mode" required>
+                  <option value="">Select mode</option>
+                  <option>Online (Live)</option>
+                  <option>Offline (Classroom)</option>
+                  <option>Hybrid</option>
+                </select>
+                <span class="error-msg" id="err-mode">Mode is required</span>
+              </div>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn" onclick="prevStep(2)">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="button" class="btn btn-fill" onclick="nextStep(2)">
+                Next: Plan <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: PLAN -->
+          <div class="form-step" data-step="3">
+            <div class="form-step-title">Step 3 — <span class="neon">Choose Your Plan</span></div>
+            <div class="form-step-sub">// Select the plan that fits you best</div>
+
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-layer-group"></i> Select Plan <span class="req">*</span></label>
+              <div class="plan-select" id="planSelect">
+                <label class="plan-option">
+                  <input type="radio" name="plan" value="Basic" required>
+                  <div class="plan-name">Basic</div>
+                  <div class="plan-price">₹14,999</div>
+                  <div class="plan-note">Self-Paced</div>
+                </label>
+                <label class="plan-option">
+                  <input type="radio" name="plan" value="Pro">
+                  <div class="plan-name">Pro</div>
+                  <div class="plan-price">₹24,999</div>
+                  <div class="plan-note">Most Popular</div>
+                </label>
+                <label class="plan-option">
+                  <input type="radio" name="plan" value="Elite">
+                  <div class="plan-name">Elite</div>
+                  <div class="plan-price">₹39,999</div>
+                  <div class="plan-note">1-on-1 Mentorship</div>
+                </label>
+              </div>
+              <span class="error-msg" id="err-plan">Please select a plan</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-credit-card"></i> Payment Preference <span class="req">*</span></label>
+              <select class="form-select" id="payment" required>
+                <option value="">Select payment method</option>
+                <option>Full Payment (One-time)</option>
+                <option>EMI (3 months)</option>
+                <option>EMI (6 months)</option>
+                <option>EMI (12 months)</option>
+              </select>
+              <span class="error-msg" id="err-payment">Payment preference is required</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-comment-dots"></i> How did you hear about us? <span class="req">*</span></label>
+              <select class="form-select" id="source" required>
+                <option value="">Select source</option>
+                <option>Instagram</option>
+                <option>YouTube</option>
+                <option>Friend / Family Referral</option>
+                <option>Google Search</option>
+                <option>College / School</option>
+                <option>Other</option>
+              </select>
+              <span class="error-msg" id="err-source">Please select a source</span>
+            </div>
+
+            <div class="form-group">
+              <label class="check-item" style="cursor:pointer;">
+                <input type="checkbox" id="terms" required>
+                <span>I agree to the <a href="#" style="color:var(--neon); text-decoration:underline;">Terms & Conditions</a> and <a href="#" style="color:var(--neon); text-decoration:underline;">Privacy Policy</a>. I confirm all information provided is accurate.</span>
+              </label>
+              <span class="error-msg" id="err-terms">You must accept the terms to continue</span>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn" onclick="prevStep(3)">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="submit" class="btn btn-fill">
+                <i class="fas fa-paper-plane"></i> Submit Application
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- SUCCESS BOX -->
+        <div class="success-box" id="successBox">
+          <div class="success-icon"><i class="fas fa-check"></i></div>
+          <h3>Application Submitted!</h3>
+          <p>Thank you for applying to CyberSec Academy. Our team will review your application and contact you within 24 hours on your registered email and phone number.</p>
+          <div class="success-ref">
+            Reference ID: <strong id="refId">CSA-XXXXXX</strong>
+          </div>
+          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="dashboard.html" class="btn btn-fill"><i class="fas fa-home"></i> Go to Dashboard</a>
+            <a href="course.html" class="btn"><i class="fas fa-book"></i> View Course</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="info-card reveal">
+          <h4><i class="fas fa-info-circle"></i> Why CyberSec?</h4>
+          <ul class="info-list">
+            <li><i class="fas fa-check"></i> <span><strong>8-month</strong> comprehensive curriculum</span></li>
+            <li><i class="fas fa-check"></i> <span><strong>100% hands-on</strong> live labs</span></li>
+            <li><i class="fas fa-check"></i> <span><strong>CEH-aligned</strong> training</span></li>
+            <li><i class="fas fa-check"></i> <span>Taught by <strong>Certified Ethical Hackers</strong></span></li>
+            <li><i class="fas fa-check"></i> <span><strong>Small batches</strong> for personal attention</span></li>
+            <li><i class="fas fa-check"></i> <span><strong>Lifetime access</strong> to recordings</span></li>
+            <li><i class="fas fa-check"></i> <span><strong>Certificate</strong> on completion</span></li>
+          </ul>
+        </div>
+
+        <div class="info-card reveal">
+          <h4><i class="fas fa-headset"></i> Need Help?</h4>
+          <div class="contact-line">
+            <i class="fas fa-envelope"></i>
+            <span>support@cybersec.academy</span>
+          </div>
+          <div class="contact-line">
+            <i class="fab fa-whatsapp"></i>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="contact-line">
+            <i class="fab fa-instagram"></i>
+            <span>@linux.userraj</span>
+          </div>
+          <div class="contact-line">
+            <i class="fas fa-clock"></i>
+            <span>Mon–Sat · 9 AM – 9 PM IST</span>
+          </div>
+        </div>
+
+        <div class="info-card reveal">
+          <h4><i class="fas fa-shield-alt"></i> Safe & Secure</h4>
+          <div class="trust-badge"><i class="fas fa-lock"></i> <span>Your data is <strong>encrypted</strong> & never shared</span></div>
+          <div class="trust-badge"><i class="fas fa-user-shield"></i> <span><strong>GDPR-compliant</strong> data handling</span></div>
+          <div class="trust-badge"><i class="fas fa-undo"></i> <span><strong>7-day refund</strong> policy</span></div>
+          <div class="trust-badge"><i class="fas fa-certificate"></i> <span><strong>ISO 9001:2015</strong> aligned processes</span></div>
+        </div>
+
+        <div class="info-card reveal">
+          <h4><i class="fas fa-question-circle"></i> Quick FAQs</h4>
+          <div class="mini-faq">
+            <div class="mini-faq-item">
+              <div class="mini-faq-q"><span>Application fee?</span><i class="fas fa-chevron-down"></i></div>
+              <div class="mini-faq-a"><div class="mini-faq-a-inner">No application fee. You only pay after your application is reviewed and accepted.</div></div>
+            </div>
+            <div class="mini-faq-item">
+              <div class="mini-faq-q"><span>How soon will I hear back?</span><i class="fas fa-chevron-down"></i></div>
+              <div class="mini-faq-a"><div class="mini-faq-a-inner">Within 24 hours on working days. If you don't hear back, check your spam folder or contact us.</div></div>
+            </div>
+            <div class="mini-faq-item">
+              <div class="mini-faq-q"><span>Can I change my plan later?</span><i class="fas fa-chevron-down"></i></div>
+              <div class="mini-faq-a"><div class="mini-faq-a-inner">Yes, you can upgrade your plan anytime before batch start. Just contact our support team.</div></div>
+            </div>
+            <div class="mini-faq-item">
+              <div class="mini-faq-q"><span>Is there an EMI option?</span><i class="fas fa-chevron-down"></i></div>
+              <div class="mini-faq-a"><div class="mini-faq-a-inner">Yes — 3, 6, and 12-month EMI options are available for Pro and Elite plans.</div></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="reveal">
+      <h2>Not Ready Yet? <span class="neon">Explore More</span></h2>
+      <p>Check the full curriculum or meet our instructors before applying. No pressure.</p>
+      <div class="cta-btns">
+        <a href="course.html" class="btn btn-fill btn-lg"><i class="fas fa-book"></i> View Curriculum</a>
+        <a href="team.html" class="btn btn-lg"><i class="fas fa-users"></i> Meet Instructors</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="dashboard.html" class="logo">
+          <img src="logo.jpeg" alt="CyberSec" onerror="this.style.display='none';">
+          CYBER<span class="dot">SEC</span>
+        </a>
+        <p>World-class cyber security training designed for beginners and professionals. Master ethical hacking with our 8-month comprehensive program.</p>
+        <div class="foot-social">
+          <a href="https://github.com/Rg100152" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/linux.userraj" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="course.html">Course</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="admission.html">Admission</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Profiles</h4>
+        <ul>
+          <li><a href="raj.html">Raj Gautam</a></li>
+          <li><a href="ankit.html">Ankit Maurya</a></li>
+          <li><a href="create-account.html">Create Account</a></li>
+          <li><a href="course.html">All Modules</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://github.com/Rg100152" target="_blank">→ GitHub</a></li>
+          <li><a href="https://instagram.com/linux.userraj" target="_blank">→ Instagram</a></li>
+          <li><a href="#">→ YouTube</a></li>
+          <li><a href="#">→ Discord</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="blink-cursor">root@cybersec:~# cat /copyright.txt → © 2026 CyberSec Academy</span>
+      <span>Admissions Open · Limited Seats · 24-Hour Response</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  'use strict';
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Reveal animations
+  function initReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('active'), i * 70);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  }
+  initReveal();
+
+  // Multi-step form logic
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  function updateSteps() {
+    // Update step indicators
+    document.querySelectorAll('.step-item').forEach(item => {
+      const step = parseInt(item.dataset.step);
+      item.classList.remove('active', 'completed');
+      if (step === currentStep) item.classList.add('active');
+      else if (step < currentStep) item.classList.add('completed');
+    });
+    // Progress bar
+    const progress = ((currentStep - 1) / (totalSteps - 1)) * 76; // 76% is width from 12% to 88%
+    document.getElementById('stepsProgress').style.width = progress + '%';
+    // Show active step
+    document.querySelectorAll('.form-step').forEach(step => {
+      step.classList.toggle('active', parseInt(step.dataset.step) === currentStep);
+    });
+    // Scroll to form top
+    document.getElementById('admissionForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function showError(id, show) {
+    const el = document.getElementById('err-' + id);
+    const input = document.getElementById(id);
+    if (el) el.classList.toggle('show', show);
+    if (input) input.classList.toggle('error', show);
+  }
+
+  function validateStep(step) {
+    let valid = true;
+
+    if (step === 1) {
+      const fields = ['fullName', 'dob', 'email', 'phone', 'city', 'state'];
+      fields.forEach(id => {
+        const input = document.getElementById(id);
+        let fieldValid = input.value.trim() !== '';
+        if (id === 'email') fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+        if (id === 'phone') fieldValid = /^[0-9]{10}$/.test(input.value.trim());
+        showError(id, !fieldValid);
+        if (!fieldValid) valid = false;
+      });
+    }
+
+    if (step === 2) {
+      // Qualification
+      const q = document.getElementById('qualification');
+      const qValid = q.value.trim() !== '';
+      showError('qualification', !qValid);
+      if (!qValid) valid = false;
+      // Experience
+      const exp = document.querySelector('input[name="experience"]:checked');
+      document.getElementById('err-experience').classList.toggle('show', !exp);
+      if (!exp) valid = false;
+      // Motivation
+      const m = document.getElementById('motivation');
+      const mValid = m.value.trim().length >= 20;
+      showError('motivation', !mValid);
+      if (!mValid) valid = false;
+      // Batch
+      const b = document.getElementById('batch');
+      const bValid = b.value.trim() !== '';
+      showError('batch', !bValid);
+      if (!bValid) valid = false;
+      // Mode
+      const md = document.getElementById('mode');
+      const mdValid = md.value.trim() !== '';
+      showError('mode', !mdValid);
+      if (!mdValid) valid = false;
+    }
+
+    if (step === 3) {
+      // Plan
+      const plan = document.querySelector('input[name="plan"]:checked');
+      document.getElementById('err-plan').classList.toggle('show', !plan);
+      if (!plan) valid = false;
+      // Payment
+      const p = document.getElementById('payment');
+      const pValid = p.value.trim() !== '';
+      showError('payment', !pValid);
+      if (!pValid) valid = false;
+      // Source
+      const s = document.getElementById('source');
+      const sValid = s.value.trim() !== '';
+      showError('source', !sValid);
+      if (!sValid) valid = false;
+      // Terms
+      const t = document.getElementById('terms');
+      document.getElementById('err-terms').classList.toggle('show', !t.checked);
+      if (!t.checked) valid = false;
+    }
+
+    return valid;
+  }
+
+  function nextStep(from) {
+    if (validateStep(from)) {
+      currentStep = from + 1;
+      updateSteps();
+    }
+  }
+
+  function prevStep(from) {
+    currentStep = from - 1;
+    updateSteps();
+  }
+
+  // Plan option selection styling
+  document.querySelectorAll('.plan-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.plan-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      document.getElementById('err-plan').classList.remove('show');
+    });
+  });
+
+  // Check-item highlight
+  document.querySelectorAll('.check-item input').forEach(inp => {
+    inp.addEventListener('change', () => {
+      // For radio groups
+      const name = inp.name;
+      if (name) {
+        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+          r.closest('.check-item').classList.toggle('checked', r.checked);
+        });
+        document.getElementById('err-' + name)?.classList.remove('show');
+      } else {
+        inp.closest('.check-item').classList.toggle('checked', inp.checked);
+      }
+    });
+  });
+
+  // Terms checkbox
+  const terms = document.getElementById('terms');
+  if (terms) {
+    terms.addEventListener('change', () => {
+      if (terms.checked) document.getElementById('err-terms').classList.remove('show');
+    });
+  }
+
+  // Clear error on input
+  document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => {
+    el.addEventListener('input', () => {
+      el.classList.remove('error');
+      if (el.id) document.getElementById('err-' + el.id)?.classList.remove('show');
+    });
+    el.addEventListener('change', () => {
+      el.classList.remove('error');
+      if (el.id) document.getElementById('err-' + el.id)?.classList.remove('show');
+    });
+  });
+
+  // Form submit
+  document.getElementById('admissionForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validateStep(3)) return;
+
+    // Generate reference ID
+    const ref = 'CSA-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+    document.getElementById('refId').textContent = ref;
+
+    // Hide form, show success
+    document.getElementById('admissionForm').style.display = 'none';
+    document.querySelector('.steps').style.display = 'none';
+    document.getElementById('successBox').classList.add('show');
+
+    // Log (in real app, send to backend)
+    console.log('%c✅ APPLICATION SUBMITTED', 'color:#00ff41; font-size:16px; font-weight:900;');
+    console.log('Reference:', ref);
+    console.log('Applicant:', document.getElementById('fullName').value);
+    console.log('Plan:', document.querySelector('input[name="plan"]:checked')?.value);
+  });
+
+  // Mini FAQ accordion
+  document.querySelectorAll('.mini-faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.mini-faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Cursor glow
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.style.cssText = `
+      position: fixed; width: 8px; height: 8px;
+      background: rgba(0, 255, 65, 0.6); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+      transition: transform 0.15s ease-in-out;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+    `;
+    document.body.appendChild(glow);
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  }
+
+  // Console easter egg
+  console.log('%c⚡ CYBERSEC ACADEMY — ADMISSION', 'color:#00ff41; font-size:24px; font-weight:900; text-shadow: 0 0 20px rgba(0,255,65,0.8);');
+  console.log('%c3-Step Application · 24-Hour Response · Limited Seats', 'color:#00d9ff; font-size:13px;');
+  console.log('%cPlans: Basic ₹14,999 · Pro ₹24,999 · Elite ₹39,999', 'color:#ffcc00; font-size:12px;');
+</script>
+</body>
+</html>

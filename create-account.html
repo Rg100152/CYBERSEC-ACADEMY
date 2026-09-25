@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Create your free CyberSec Academy account. Get access to course previews, notes, and community.">
+<title>Create Account | CyberSec Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --neon: #00ff41;
+    --neon-bright: #39ff6e;
+    --neon-dim: #00cc33;
+    --neon-dark: #008822;
+    --neon-glow: 0 0 12px rgba(0, 255, 65, 0.6);
+    --neon-glow-lg: 0 0 30px rgba(0, 255, 65, 0.4);
+    --cyan: #00d9ff;
+    --cyan-glow: 0 0 12px rgba(0, 217, 255, 0.6);
+    --red: #ff3333;
+    --yellow: #ffcc00;
+    --orange: #ff8800;
+    --purple: #b366ff;
+    --bg: #0a0e0a;
+    --bg-dark: #050805;
+    --bg-darker: #020302;
+    --bg-card: #0f1410;
+    --bg-card-hover: #141a16;
+    --border: #1a2f1e;
+    --border-bright: #2a4a32;
+    --text: #d4ffd9;
+    --text-dim: #6b8a72;
+    --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      linear-gradient(rgba(0, 255, 65, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ul { list-style: none; }
+  .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--neon-dark); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--neon); }
+  ::selection { background: var(--neon); color: var(--bg); }
+
+  /* STATUS BAR */
+  .statusbar {
+    background: #000; padding: 8px 0;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--neon); letter-spacing: 0.5px;
+    position: relative; z-index: 1001;
+  }
+  .statusbar::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    animation: scanline 4s linear infinite;
+  }
+  @keyframes scanline { 0%{transform:translateX(-100%);} 100%{transform:translateX(100%);} }
+  .statusbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .statusbar-left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .status-dot {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--neon); border-radius: 50%;
+    box-shadow: var(--neon-glow); animation: pulse-dot 1.5s infinite;
+  }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(1.3);} }
+  .blink { animation: blink 1s infinite; }
+  @keyframes blink { 50%{opacity:0.2;} }
+
+  /* NAVBAR */
+  .navbar {
+    background: rgba(5, 8, 5, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    position: sticky; top: 0; z-index: 1000;
+    transition: var(--transition);
+  }
+  .navbar.scrolled {
+    padding: 12px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-bottom-color: var(--border-bright);
+  }
+  .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+    color: var(--neon); letter-spacing: 2px;
+    text-shadow: var(--neon-glow); transition: var(--transition);
+  }
+  .logo img {
+    width: 40px; height: 40px; border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .logo .dot { color: var(--neon-dim); }
+  .logo:hover { letter-spacing: 3px; }
+  .menu { display: flex; gap: 32px; font-family: var(--font-mono); font-size: 0.85rem; }
+  .menu a {
+    color: var(--text-dim); letter-spacing: 1.5px;
+    text-transform: uppercase; transition: var(--transition);
+    position: relative; padding: 6px 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .menu a::before {
+    content: '>'; color: var(--neon); opacity: 0;
+    margin-left: -12px; transition: var(--transition); font-weight: bold;
+  }
+  .menu a:hover, .menu a.active { color: var(--neon); text-shadow: var(--neon-glow); }
+  .menu a:hover::before, .menu a.active::before { opacity: 1; margin-left: 0; }
+  .menu a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--neon);
+    box-shadow: var(--neon-glow); transition: var(--transition);
+  }
+  .menu a:hover::after, .menu a.active::after { width: 100%; }
+  .nav-btns { display: flex; gap: 10px; }
+
+  /* BUTTONS */
+  .btn {
+    font-family: var(--font-mono); font-size: 0.8rem;
+    padding: 11px 24px; cursor: pointer;
+    transition: var(--transition); letter-spacing: 1.5px;
+    text-transform: uppercase; border: 1px solid var(--neon);
+    background: transparent; color: var(--neon);
+    display: inline-flex; align-items: center; gap: 8px;
+    position: relative; overflow: hidden; font-weight: 400;
+  }
+  .btn::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%; background: var(--neon);
+    transition: var(--transition); z-index: -1;
+  }
+  .btn:hover::before { left: 0; }
+  .btn:hover { color: var(--bg); box-shadow: var(--neon-glow-lg); transform: translateY(-2px); }
+  .btn-fill {
+    background: var(--neon); color: var(--bg); font-weight: 700;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  }
+  .btn-fill::before { background: var(--neon-bright); }
+  .btn-fill:hover { background: var(--neon-bright); box-shadow: 0 0 30px rgba(0, 255, 65, 0.8); }
+  .btn-lg { padding: 15px 32px; font-size: 0.9rem; }
+  .btn-block { width: 100%; justify-content: center; }
+
+  /* AUTH LAYOUT */
+  .auth-wrap {
+    min-height: calc(100vh - 120px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+
+  /* LEFT PANEL — INFO */
+  .auth-info {
+    background: linear-gradient(135deg, #050805 0%, #0a0e0a 100%);
+    padding: 60px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid var(--border);
+  }
+  .auth-info::before {
+    content: ''; position: absolute; top: -20%; right: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0, 255, 65, 0.1), transparent 70%);
+    border-radius: 50%; animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-30px);} }
+  .auth-info::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, rgba(0, 255, 65, 0.03) 0px, rgba(0, 255, 65, 0.03) 1px, transparent 1px, transparent 4px);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .auth-info-inner { position: relative; z-index: 2; max-width: 460px; }
+  .auth-info .tag {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--neon); letter-spacing: 3px;
+    text-transform: uppercase; display: inline-block;
+    margin-bottom: 22px; padding: 6px 14px;
+    border: 1px solid var(--border-bright);
+    background: rgba(0, 255, 65, 0.05);
+  }
+  .auth-info h1 {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .auth-info h1 .neon { color: var(--neon); text-shadow: 0 0 20px rgba(0, 255, 65, 0.7); }
+  .auth-info > .auth-info-inner > p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 34px;
+  }
+  .auth-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .perk {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(0, 255, 65, 0.03);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  .perk:hover {
+    border-color: var(--neon);
+    background: rgba(0, 255, 65, 0.06);
+    transform: translateX(6px);
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
+  }
+  .perk i {
+    color: var(--neon);
+    font-size: 1.1rem;
+    margin-top: 3px;
+    text-shadow: var(--neon-glow);
+    flex-shrink: 0;
+  }
+  .perk-text strong {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .perk-text span {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .auth-terminal {
+    background: #000;
+    border: 1px solid var(--border);
+    padding: 18px 20px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.9;
+    position: relative;
+    overflow: hidden;
+  }
+  .auth-terminal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  }
+  .auth-terminal .prompt { color: var(--neon); margin-right: 8px; }
+  .auth-terminal .cmd { color: var(--text); }
+  .auth-terminal .out { color: var(--text-dim); display: block; padding-left: 20px; }
+  .auth-terminal .out.ok { color: var(--neon-dim); }
+
+  /* RIGHT PANEL — FORM */
+  .auth-form-wrap {
+    padding: 60px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .auth-form-card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .auth-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--neon), var(--cyan), var(--neon));
+    box-shadow: var(--neon-glow);
+  }
+  .form-head { margin-bottom: 28px; text-align: center; }
+  .form-head .lock-icon {
+    width: 60px; height: 60px;
+    margin: 0 auto 18px;
+    border: 2px solid var(--neon);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon);
+    font-size: 1.5rem;
+    box-shadow: var(--neon-glow);
+    background: rgba(0, 255, 65, 0.05);
+    animation: pulse-dot 2s infinite;
+  }
+  .form-head h2 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .form-head h2 .neon { color: var(--neon); text-shadow: var(--neon-glow); }
+  .form-head p {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* FORM */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .form-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .form-label .req { color: var(--red); font-size: 0.9rem; }
+  .form-label i { color: var(--neon); font-size: 0.75rem; }
+  .input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .form-input {
+    background: var(--bg-darker);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 13px 16px 13px 44px;
+    transition: var(--transition);
+    width: 100%;
+    outline: none;
+  }
+  .form-input::placeholder { color: var(--text-dim); opacity: 0.6; }
+  .form-input:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.1), var(--neon-glow);
+    background: rgba(0, 255, 65, 0.02);
+  }
+  .form-input.error {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.1);
+  }
+  .form-input.valid {
+    border-color: var(--neon-dim);
+  }
+  .input-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: var(--transition);
+  }
+  .form-input:focus ~ .input-icon,
+  .input-wrap:focus-within .input-icon {
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+  }
+  .toggle-pass {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    padding: 4px;
+  }
+  .toggle-pass:hover { color: var(--neon); }
+
+  .error-msg {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--red);
+    letter-spacing: 0.5px;
+    display: none;
+    align-items: center;
+    gap: 5px;
+  }
+  .error-msg.show { display: flex; }
+  .error-msg::before { content: '⚠'; }
+
+  /* PASSWORD STRENGTH */
+  .strength-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .strength-bars {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+  }
+  .strength-bars span {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    transition: var(--transition);
+  }
+  .strength-bars.weak span:nth-child(1) { background: var(--red); box-shadow: 0 0 8px rgba(255,51,51,0.6); }
+  .strength-bars.fair span:nth-child(1),
+  .strength-bars.fair span:nth-child(2) { background: var(--orange); box-shadow: 0 0 8px rgba(255,136,0,0.6); }
+  .strength-bars.good span:nth-child(1),
+  .strength-bars.good span:nth-child(2),
+  .strength-bars.good span:nth-child(3) { background: var(--yellow); box-shadow: 0 0 8px rgba(255,204,0,0.6); }
+  .strength-bars.strong span { background: var(--neon); box-shadow: var(--neon-glow); }
+  .strength-text {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    min-width: 60px;
+    text-align: right;
+    color: var(--text-dim);
+  }
+  .strength-text.weak { color: var(--red); }
+  .strength-text.fair { color: var(--orange); }
+  .strength-text.good { color: var(--yellow); }
+  .strength-text.strong { color: var(--neon); }
+
+  /* TERMS */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    background: var(--bg-darker);
+    transition: var(--transition);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .check-item:hover { border-color: var(--border-bright); background: var(--bg-card-hover); }
+  .check-item input {
+    appearance: none;
+    width: 18px; height: 18px;
+    border: 2px solid var(--border-bright);
+    background: var(--bg-darker);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .check-item input:checked {
+    background: var(--neon);
+    border-color: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .check-item input:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+  .check-item.checked {
+    border-color: var(--neon);
+    color: var(--text);
+    background: rgba(0, 255, 65, 0.04);
+  }
+  .check-item a {
+    color: var(--neon);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* SUBMIT */
+  .form-submit { margin-top: 22px; }
+
+  /* DIVIDER */
+  .divider-or {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 24px 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .divider-or::before, .divider-or::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SOCIAL */
+  .social-auth {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-darker);
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  .social-btn:hover {
+    border-color: var(--neon);
+    color: var(--neon);
+    background: rgba(0, 255, 65, 0.05);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-2px);
+  }
+  .social-btn i { font-size: 0.95rem; }
+
+  /* BOTTOM LINK */
+  .form-footer {
+    margin-top: 26px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+  .form-footer a {
+    color: var(--neon);
+    font-weight: 700;
+    transition: var(--transition);
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+  }
+  .form-footer a:hover {
+    text-shadow: var(--neon-glow);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* SUCCESS */
+  .success-box {
+    display: none;
+    text-align: center;
+    padding: 20px 10px;
+    animation: fadeIn 0.6s ease;
+  }
+  .success-box.show { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .success-icon {
+    width: 80px; height: 80px;
+    margin: 0 auto 22px;
+    border: 3px solid var(--neon);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon);
+    font-size: 2.2rem;
+    box-shadow: var(--neon-glow-lg);
+    animation: pulse-dot 2s infinite;
+  }
+  .success-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    margin-bottom: 12px;
+  }
+  .success-box p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .success-box .btn { width: 100%; justify-content: center; }
+
+  /* FOOTER MINI */
+  .mini-footer {
+    background: #000;
+    border-top: 1px solid var(--border);
+    padding: 22px 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .mini-footer::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    opacity: 0.4;
+  }
+  .mini-footer .blink-cursor::after {
+    content: '_'; color: var(--neon); animation: blink 1s infinite;
+  }
+
+  /* CURSOR GLOW */
+  .cursor-glow {
+    position: fixed; width: 8px; height: 8px;
+    background: rgba(0, 255, 65, 0.6); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+    transition: transform 0.15s ease-in-out;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .auth-wrap { grid-template-columns: 1fr; }
+    .auth-info { padding: 50px 40px; border-right: none; border-bottom: 1px solid var(--border); }
+    .auth-form-wrap { padding: 50px 40px; }
+    .auth-info-inner { max-width: 100%; }
+  }
+  @media (max-width: 768px) {
+    .navbar .container { flex-wrap: wrap; gap: 14px; }
+    .menu { order: 3; width: 100%; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.78rem; border-top: 1px solid var(--border); padding-top: 16px; }
+    .nav-btns { margin-left: auto; }
+    .nav-btns .btn { padding: 8px 14px; font-size: 0.7rem; }
+    .auth-info { padding: 40px 24px; }
+    .auth-info h1 { font-size: 1.8rem; }
+    .auth-form-wrap { padding: 40px 24px; }
+    .auth-form-card { padding: 30px 24px; }
+    .statusbar .container { flex-direction: column; text-align: center; }
+    .statusbar-left { justify-content: center; }
+    .social-auth { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .container { padding: 0 16px; }
+    .auth-info { padding: 30px 16px; }
+    .auth-info h1 { font-size: 1.4rem; }
+    .auth-form-wrap { padding: 30px 16px; }
+    .auth-form-card { padding: 24px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <div class="container">
+    <div class="statusbar-left">
+      <span><span class="status-dot"></span> SYSTEM ONLINE</span>
+      <span>USER: <span style="color:var(--cyan);">NEW@SECURE</span></span>
+      <span>SECTION: <span style="color:var(--yellow);">SIGNUP</span></span>
+    </div>
+    <div class="statusbar-right">
+      <span class="blink">●</span> SECURE CONNECTION
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="dashboard.html" class="logo">
+      <img src="logo.jpeg" alt="CyberSec" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shield-hal\'></i> CYBER<span class=\'dot\'>SEC</span>';">
+      CYBER<span class="dot">SEC</span>
+    </a>
+    <ul class="menu">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="course.html"><i class="fas fa-book"></i> Course</a></li>
+      <li><a href="team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="admission.html"><i class="fas fa-user-plus"></i> Admission</a></li>
+    </ul>
+    <div class="nav-btns">
+      <a href="admission.html" class="btn btn-fill"><i class="fas fa-rocket"></i> Enroll</a>
+    </div>
+  </div>
+</nav>
+
+<!-- AUTH WRAP -->
+<div class="auth-wrap">
+
+  <!-- LEFT: INFO -->
+  <section class="auth-info">
+    <div class="auth-info-inner">
+      <span class="tag">// FREE ACCOUNT</span>
+      <h1>Join the <span class="neon">CyberSec</span> Community</h1>
+      <p>Create your free account and unlock course previews, downloadable notes, community access, and early-bird enrollment offers.</p>
+
+      <div class="auth-perks">
+        <div class="perk">
+          <i class="fas fa-play-circle"></i>
+          <div class="perk-text">
+            <strong>Free Course Previews</strong>
+            <span>Watch sample lessons from every module before enrolling.</span>
+          </div>
+        </div>
+        <div class="perk">
+          <i class="fas fa-file-download"></i>
+          <div class="perk-text">
+            <strong>Downloadable Notes</strong>
+            <span>Get cheat sheets and quick-reference guides — free forever.</span>
+          </div>
+        </div>
+        <div class="perk">
+          <i class="fas fa-users"></i>
+          <div class="perk-text">
+            <strong>Community Access</strong>
+            <span>Join the Discord and connect with 500+ aspiring hackers.</span>
+          </div>
+        </div>
+        <div class="perk">
+          <i class="fas fa-tag"></i>
+          <div class="perk-text">
+            <strong>Early-Bird Offers</strong>
+            <span>Members get exclusive discounts on new batches first.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-terminal">
+        <span><span class="prompt">$</span><span class="cmd">./init_account.sh --new</span></span>
+        <span class="out">[+] Initializing secure signup...</span>
+        <span class="out ok">✓ Encryption: AES-256 enabled</span>
+        <span class="out ok">✓ No spam · Unsubscribe anytime</span>
+        <span><span class="prompt">$</span><span class="blink" style="color:var(--neon);">_</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: FORM -->
+  <section class="auth-form-wrap">
+    <div class="auth-form-card">
+
+      <!-- FORM -->
+      <form id="signupForm" novalidate>
+
+        <div class="form-head">
+          <div class="lock-icon"><i class="fas fa-user-plus"></i></div>
+          <h2>Create <span class="neon">Account</span></h2>
+          <p>// It's free & takes 30 seconds</p>
+        </div>
+
+        <!-- FULL NAME -->
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-user"></i> Full Name <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input type="text" class="form-input" id="fullName" placeholder="Your full name" required>
+            <i class="fas fa-user input-icon"></i>
+          </div>
+          <span class="error-msg" id="err-fullName">Full name is required</span>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-envelope"></i> Email Address <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input type="email" class="form-input" id="email" placeholder="you@example.com" required>
+            <i class="fas fa-envelope input-icon"></i>
+          </div>
+          <span class="error-msg" id="err-email">Valid email is required</span>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-lock"></i> Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input type="password" class="form-input" id="password" placeholder="Min 8 chars, 1 letter, 1 number" required>
+            <i class="fas fa-lock input-icon"></i>
+            <button type="button" class="toggle-pass" id="togglePass" aria-label="Toggle password">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <div class="strength-wrap" id="strengthWrap" style="display:none;">
+            <div class="strength-bars" id="strengthBars">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <span class="strength-text" id="strengthText">—</span>
+          </div>
+          <span class="error-msg" id="err-password">Password must be 8+ chars with at least 1 letter and 1 number</span>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-lock"></i> Confirm Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input type="password" class="form-input" id="confirmPassword" placeholder="Re-enter your password" required>
+            <i class="fas fa-check-double input-icon"></i>
+            <button type="button" class="toggle-pass" id="toggleConfirm" aria-label="Toggle password">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <span class="error-msg" id="err-confirmPassword">Passwords do not match</span>
+        </div>
+
+        <!-- TERMS -->
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="check-item" id="termsItem">
+            <input type="checkbox" id="terms" required>
+            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I confirm I'm 13+ years old.</span>
+          </label>
+          <span class="error-msg" id="err-terms" style="margin-top:6px;">You must accept the terms</span>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="form-submit">
+          <button type="submit" class="btn btn-fill btn-block btn-lg">
+            <i class="fas fa-user-plus"></i> Create My Account
+          </button>
+        </div>
+
+        <!-- SOCIAL -->
+        <div class="divider-or">or sign up with</div>
+        <div class="social-auth">
+          <button type="button" class="social-btn" onclick="socialSignup('Google')">
+            <i class="fab fa-google"></i> Google
+          </button>
+          <button type="button" class="social-btn" onclick="socialSignup('GitHub')">
+            <i class="fab fa-github"></i> GitHub
+          </button>
+        </div>
+
+        <!-- FOOTER LINK -->
+        <div class="form-footer">
+          Already have an account? <a href="admission.html">Sign in →</a>
+        </div>
+
+      </form>
+
+      <!-- SUCCESS -->
+      <div class="success-box" id="successBox">
+        <div class="success-icon"><i class="fas fa-check"></i></div>
+        <h3>Account Created!</h3>
+        <p>Welcome to CyberSec Academy, <strong id="welcomeName" style="color:var(--neon);">Hacker</strong>! Check your email for a verification link.</p>
+        <a href="dashboard.html" class="btn btn-fill btn-lg">
+          <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- MINI FOOTER -->
+<footer class="mini-footer">
+  <div class="container">
+    <span class="blink-cursor">root@cybersec:~# cat /signup.txt → © 2026 CyberSec Academy · Secure Signup</span>
+  </div>
+</footer>
+
+<script>
+  'use strict';
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Cursor glow
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  }
+
+  // Password toggle
+  function setupToggle(btnId, inputId) {
+    const btn = document.getElementById(btnId);
+    const input = document.getElementById(inputId);
+    btn.addEventListener('click', () => {
+      const isPass = input.type === 'password';
+      input.type = isPass ? 'text' : 'password';
+      btn.innerHTML = isPass ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+    });
+  }
+  setupToggle('togglePass', 'password');
+  setupToggle('toggleConfirm', 'confirmPassword');
+
+  // Password strength
+  const passwordInput = document.getElementById('password');
+  const strengthWrap = document.getElementById('strengthWrap');
+  const strengthBars = document.getElementById('strengthBars');
+  const strengthText = document.getElementById('strengthText');
+
+  function evaluatePassword(pw) {
+    let score = 0;
+    if (pw.length >= 8) score++;
+    if (pw.length >= 12) score++;
+    if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score++;
+    if (/[0-9]/.test(pw)) score++;
+    if (/[^A-Za-z0-9]/.test(pw)) score++;
+    return Math.min(score, 4);
+  }
+
+  passwordInput.addEventListener('input', () => {
+    const pw = passwordInput.value;
+    if (pw.length === 0) {
+      strengthWrap.style.display = 'none';
+      return;
+    }
+    strengthWrap.style.display = 'flex';
+    const score = evaluatePassword(pw);
+    strengthBars.className = 'strength-bars';
+    strengthText.className = 'strength-text';
+    if (score <= 1) {
+      strengthBars.classList.add('weak');
+      strengthText.classList.add('weak');
+      strengthText.textContent = 'Weak';
+    } else if (score === 2) {
+      strengthBars.classList.add('fair');
+      strengthText.classList.add('fair');
+      strengthText.textContent = 'Fair';
+    } else if (score === 3) {
+      strengthBars.classList.add('good');
+      strengthText.classList.add('good');
+      strengthText.textContent = 'Good';
+    } else {
+      strengthBars.classList.add('strong');
+      strengthText.classList.add('strong');
+      strengthText.textContent = 'Strong';
+    }
+  });
+
+  // Terms checkbox highlight
+  const terms = document.getElementById('terms');
+  const termsItem = document.getElementById('termsItem');
+  terms.addEventListener('change', () => {
+    termsItem.classList.toggle('checked', terms.checked);
+    if (terms.checked) document.getElementById('err-terms').classList.remove('show');
+  });
+
+  // Error helpers
+  function showError(id, show) {
+    const el = document.getElementById('err-' + id);
+    const input = document.getElementById(id);
+    if (el) el.classList.toggle('show', show);
+    if (input) input.classList.toggle('error', show);
+    if (input && !show && input.value.trim()) input.classList.add('valid');
+    if (input && show) input.classList.remove('valid');
+  }
+
+  // Clear error on input
+  document.querySelectorAll('.form-input').forEach(el => {
+    el.addEventListener('input', () => {
+      el.classList.remove('error');
+      const errEl = document.getElementById('err-' + el.id);
+      if (errEl) errEl.classList.remove('show');
+    });
+  });
+
+  // Validation
+  function validateForm() {
+    let valid = true;
+
+    // Full name
+    const name = document.getElementById('fullName');
+    const nameValid = name.value.trim().length >= 2;
+    showError('fullName', !nameValid);
+    if (!nameValid) valid = false;
+
+    // Email
+    const email = document.getElementById('email');
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    showError('email', !emailValid);
+    if (!emailValid) valid = false;
+
+    // Password
+    const pw = passwordInput.value;
+    const pwValid = pw.length >= 8 && /[A-Za-z]/.test(pw) && /[0-9]/.test(pw);
+    showError('password', !pwValid);
+    if (!pwValid) valid = false;
+
+    // Confirm password
+    const cpw = document.getElementById('confirmPassword');
+    const cpwValid = cpw.value === pw && cpw.value.length > 0;
+    showError('confirmPassword', !cpwValid);
+    if (!cpwValid) valid = false;
+
+    // Terms
+    const termsOk = terms.checked;
+    document.getElementById('err-terms').classList.toggle('show', !termsOk);
+    if (!termsOk) valid = false;
+
+    return valid;
+  }
+
+  // Submit
+  document.getElementById('signupForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    const name = document.getElementById('fullName').value.trim();
+    document.getElementById('welcomeName').textContent = name.split(' ')[0];
+
+    document.getElementById('signupForm').style.display = 'none';
+    document.getElementById('successBox').classList.add('show');
+
+    console.log('%c✅ ACCOUNT CREATED', 'color:#00ff41; font-size:16px; font-weight:900;');
+    console.log('Name:', name);
+    console.log('Email:', document.getElementById('email').value);
+    console.log('// TODO: Send to backend API');
+  });
+
+  // Social signup
+  function socialSignup(provider) {
+    console.log('%c🔐 Social Signup: ' + provider, 'color:#00d9ff; font-size:13px;');
+    alert(provider + ' signup would open OAuth flow.\n\nIn production, this connects to your backend OAuth endpoint.');
+  }
+
+  // Console easter egg
+  console.log('%c⚡ CYBERSEC ACADEMY — SIGNUP', 'color:#00ff41; font-size:24px; font-weight:900; text-shadow: 0 0 20px rgba(0,255,65,0.8);');
+  console.log('%cFree Account · Course Previews · Community Access', 'color:#00d9ff; font-size:13px;');
+  console.log('%cEncrypted · No spam · Cancel anytime', 'color:#ffcc00; font-size:12px;');
+</script>
+</body>
+</html>
